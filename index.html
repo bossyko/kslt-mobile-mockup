@@ -1597,6 +1597,141 @@ a, button, [role="button"] {
 .tl-status-dot.done { background: var(--text-dim); }
 .tl-status-dot.soon { background: var(--orange); }
 
+/* ===== LIVE MATCH SCREEN ===== */
+.live-list-card {
+  margin: 0 16px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.live-list-card:active { background: var(--bg-card-hover); }
+.live-list-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.live-list-info { font-size: 11px; color: var(--text-muted); }
+.live-list-players {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.live-list-p {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.live-list-p.right { flex-direction: row-reverse; }
+.live-list-av {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+  color: var(--text-sec); flex-shrink: 0;
+}
+.live-list-pname { font-size: 13px; font-weight: 600; line-height: 1.2; }
+.live-list-pname .serving-dot {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  margin-left: 4px; vertical-align: middle;
+}
+.live-list-score { min-width: 60px; text-align: center; }
+.live-list-sets {
+  display: flex; gap: 8px; justify-content: center;
+  font-size: 18px; font-weight: 800;
+}
+.live-list-set {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1px; line-height: 1.1;
+}
+.live-list-set .s-top.leading { color: var(--accent); }
+.live-list-game { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+
+/* Full live match view */
+.live-full {
+  position: fixed; inset: 0;
+  background: var(--bg); z-index: 300;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.live-full.open { transform: translateY(0); }
+.live-full-court {
+  text-align: center; font-size: 12px;
+  color: var(--text-muted); padding: 8px 0 4px;
+}
+.live-full-players {
+  display: flex; align-items: flex-start;
+  justify-content: center; gap: 16px; padding: 20px 16px;
+}
+.live-full-p { flex: 1; text-align: center; max-width: 120px; }
+.live-full-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--bg-elevated); border: 2px solid var(--border-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 700; color: var(--text-sec);
+  margin: 0 auto 8px;
+}
+.live-full-avatar.serving { border-color: var(--accent); box-shadow: 0 0 16px var(--accent-glow); }
+.live-full-name { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+.live-full-rank { font-size: 11px; color: var(--text-muted); }
+
+/* Scoreboard table */
+.live-full-scoreboard {
+  margin: 0 16px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+}
+.live-full-score-head {
+  display: flex; padding: 8px 14px;
+  font-size: 10px; font-weight: 600;
+  color: var(--text-dim); text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.sh-name { flex: 1; }
+.sh-set { width: 32px; text-align: center; }
+.sh-game { width: 40px; text-align: center; }
+.live-full-score-row {
+  display: flex; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid var(--border);
+}
+.live-full-score-row:last-child { border-bottom: none; }
+.live-full-score-row.serving { background: rgba(204,255,0,0.04); }
+.sr-name { flex: 1; font-size: 13px; font-weight: 600; }
+.sr-name .sr-dot {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%; margin-right: 6px;
+}
+.sr-set { width: 32px; text-align: center; font-size: 15px; font-weight: 700; }
+.sr-set.won { color: var(--accent); }
+.sr-game { width: 40px; text-align: center; font-size: 15px; font-weight: 800; color: var(--accent); }
+
+/* Match stats */
+.live-stats {
+  margin: 12px 16px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 14px;
+}
+.live-stats-title {
+  font-size: 12px; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;
+}
+.live-stat-row { display: flex; align-items: center; margin-bottom: 8px; }
+.live-stat-row:last-child { margin-bottom: 0; }
+.ls-val { width: 32px; text-align: center; font-size: 13px; font-weight: 700; }
+.ls-val.lead { color: var(--accent); }
+.ls-bar-wrap { flex: 1; height: 4px; border-radius: 2px; background: var(--bg-elevated); margin: 0 8px; position: relative; overflow: hidden; }
+.ls-bar-fill { height: 100%; border-radius: 2px; position: absolute; top: 0; }
+.ls-bar-fill.left { left: 0; background: var(--accent); }
+.ls-bar-fill.right { right: 0; background: var(--red); }
+.ls-label { font-size: 10px; color: var(--text-muted); text-align: center; min-width: 44px; }
+
 /* ===== PLAYER PROFILE / CHALLENGE ===== */
 .player-overlay {
   position: fixed; inset: 0;
@@ -2168,6 +2303,95 @@ a, button, [role="button"] {
             <div class="news-card-title">Обновление рейтинга: 3 игрока получили промоушен</div>
             <div class="news-card-date">1 апр 2026</div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== LIVE SCREEN ====== -->
+    <div class="screen" id="screenLive">
+      <div class="screen-header">
+        <h1>Live</h1>
+        <p>Матчи в реальном времени</p>
+      </div>
+
+      <div class="live-list-card" onclick="openLiveMatch()">
+        <div class="live-list-top">
+          <span class="live-badge">LIVE</span>
+          <span class="live-list-info">Корт #1 · Masters Invitational</span>
+        </div>
+        <div class="live-list-players">
+          <div class="live-list-p">
+            <div class="live-list-av">АИ</div>
+            <div class="live-list-pname">А. Иванов <span class="serving-dot"></span></div>
+          </div>
+          <div class="live-list-score">
+            <div class="live-list-sets">
+              <div class="live-list-set"><span class="s-top leading">6</span><span>3</span></div>
+              <div class="live-list-set"><span class="s-top">4</span><span class="leading" style="color:var(--accent)">5</span></div>
+            </div>
+            <div class="live-list-game">30-40</div>
+          </div>
+          <div class="live-list-p right">
+            <div class="live-list-av">ДК</div>
+            <div class="live-list-pname">Д. Козлов</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="live-list-card" onclick="openLiveMatch()">
+        <div class="live-list-top">
+          <span class="live-badge">LIVE</span>
+          <span class="live-list-info">Корт #2 · Masters Invitational</span>
+        </div>
+        <div class="live-list-players">
+          <div class="live-list-p">
+            <div class="live-list-av">БС</div>
+            <div class="live-list-pname">Б. Сыдыков</div>
+          </div>
+          <div class="live-list-score">
+            <div class="live-list-sets">
+              <div class="live-list-set"><span class="s-top">3</span><span class="leading" style="color:var(--accent)">6</span></div>
+              <div class="live-list-set"><span class="s-top leading">2</span><span>1</span></div>
+            </div>
+            <div class="live-list-game">15-15</div>
+          </div>
+          <div class="live-list-p right">
+            <div class="live-list-av">НА</div>
+            <div class="live-list-pname">Н. Аманов <span class="serving-dot"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="live-list-card" onclick="openLiveMatch()">
+        <div class="live-list-top">
+          <span class="live-badge">LIVE</span>
+          <span class="live-list-info">Корт #3 · Masters Invitational</span>
+        </div>
+        <div class="live-list-players">
+          <div class="live-list-p">
+            <div class="live-list-av">ТМ</div>
+            <div class="live-list-pname">Т. Маратов <span class="serving-dot"></span></div>
+          </div>
+          <div class="live-list-score">
+            <div class="live-list-sets">
+              <div class="live-list-set"><span class="s-top leading">6</span><span>4</span></div>
+              <div class="live-list-set"><span class="s-top leading">5</span><span>3</span></div>
+            </div>
+            <div class="live-list-game">40-30</div>
+          </div>
+          <div class="live-list-p right">
+            <div class="live-list-av">ЕЖ</div>
+            <div class="live-list-pname">Е. Жумабеков</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state when no live matches -->
+      <div style="display:none">
+        <div class="empty-state">
+          <div class="empty-icon">📺</div>
+          <div class="empty-title">Нет матчей</div>
+          <div class="empty-text">Сейчас нет live-трансляций. Следите за расписанием турниров.</div>
         </div>
       </div>
     </div>
@@ -3165,6 +3389,11 @@ a, button, [role="button"] {
 
       <div class="menu-section">
         <div class="menu-section-title">Разделы</div>
+        <button class="menu-item" data-screen="screenLive">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M16.24 7.76a6 6 0 010 8.49"/><path d="M7.76 16.24a6 6 0 010-8.49"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 19.07a10 10 0 010-14.14"/></svg>
+          <span>Live</span>
+          <span class="menu-badge">3</span>
+        </button>
         <button class="menu-item" data-screen="screenNews">
           <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6z"/></svg>
           <span>Новости</span>
@@ -3539,6 +3768,124 @@ a, button, [role="button"] {
     </div>
   </div>
 
+  <!-- ====== LIVE MATCH FULL OVERLAY ====== -->
+  <div class="live-full" id="liveFullOverlay">
+    <div class="td-topbar">
+      <button class="td-back" onclick="closeLiveMatch()">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Live
+      </button>
+      <span class="live-badge">LIVE</span>
+      <span style="width:60px"></span>
+    </div>
+
+    <div class="live-full-court">Корт #1 · Masters Invitational · Полуфинал</div>
+
+    <div class="live-full-players">
+      <div class="live-full-p">
+        <div class="live-full-avatar serving">АИ</div>
+        <div class="live-full-name">А. Иванов</div>
+        <div class="live-full-rank">#1 · Masters</div>
+      </div>
+      <div style="font-size:16px;font-weight:800;color:var(--text-dim);padding-top:24px">VS</div>
+      <div class="live-full-p">
+        <div class="live-full-avatar">ДК</div>
+        <div class="live-full-name">Д. Козлов</div>
+        <div class="live-full-rank">#3 · Masters</div>
+      </div>
+    </div>
+
+    <!-- Scoreboard -->
+    <div class="live-full-scoreboard">
+      <div class="live-full-score-head">
+        <span class="sh-name">Игрок</span>
+        <span class="sh-set">С1</span>
+        <span class="sh-set">С2</span>
+        <span class="sh-set">С3</span>
+        <span class="sh-game">Гейм</span>
+      </div>
+      <div class="live-full-score-row serving">
+        <span class="sr-name"><span class="sr-dot"></span>А. Иванов</span>
+        <span class="sr-set won">6</span>
+        <span class="sr-set">4</span>
+        <span class="sr-set">—</span>
+        <span class="sr-game">30</span>
+      </div>
+      <div class="live-full-score-row">
+        <span class="sr-name" style="padding-left:12px">Д. Козлов</span>
+        <span class="sr-set">3</span>
+        <span class="sr-set won">5</span>
+        <span class="sr-set">—</span>
+        <span class="sr-game">40</span>
+      </div>
+    </div>
+
+    <!-- Match stats -->
+    <div class="live-stats">
+      <div class="live-stats-title">Статистика матча</div>
+
+      <div class="live-stat-row">
+        <span class="ls-val lead">68%</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill left" style="width:68%"></div>
+        </div>
+        <span class="ls-label">1-я подача</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill right" style="width:58%"></div>
+        </div>
+        <span class="ls-val">58%</span>
+      </div>
+
+      <div class="live-stat-row">
+        <span class="ls-val lead">4</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill left" style="width:57%"></div>
+        </div>
+        <span class="ls-label">Эйсы</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill right" style="width:43%"></div>
+        </div>
+        <span class="ls-val">3</span>
+      </div>
+
+      <div class="live-stat-row">
+        <span class="ls-val">2</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill left" style="width:40%"></div>
+        </div>
+        <span class="ls-label">Д. ошибки</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill right" style="width:60%"></div>
+        </div>
+        <span class="ls-val lead">3</span>
+      </div>
+
+      <div class="live-stat-row">
+        <span class="ls-val lead">18</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill left" style="width:60%"></div>
+        </div>
+        <span class="ls-label">Виннерсы</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill right" style="width:40%"></div>
+        </div>
+        <span class="ls-val">12</span>
+      </div>
+
+      <div class="live-stat-row">
+        <span class="ls-val lead">3/5</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill left" style="width:60%"></div>
+        </div>
+        <span class="ls-label">Брейки</span>
+        <div class="ls-bar-wrap">
+          <div class="ls-bar-fill right" style="width:33%"></div>
+        </div>
+        <span class="ls-val">1/3</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ====== PLAYER PROFILE + CHALLENGE OVERLAY ====== -->
   <div class="player-overlay" id="playerOverlay">
     <div class="td-topbar">
@@ -3757,7 +4104,7 @@ a, button, [role="button"] {
       var h2 = this.closest('.section-title').querySelector('h2');
       if (!h2) return;
       var text = h2.textContent.toLowerCase();
-      if (text.indexOf('live') !== -1) switchScreen('screenHome');
+      if (text.indexOf('live') !== -1) switchScreen('screenLive');
       else if (text.indexOf('турнир') !== -1) switchScreen('screenTournaments');
       else if (text.indexOf('рейтинг') !== -1) switchScreen('screenRating');
       else if (text.indexOf('новости') !== -1) switchScreen('screenNews');
@@ -3865,6 +4212,17 @@ a, button, [role="button"] {
     });
   });
 
+  // === Live Match Overlay ===
+  var liveFullOverlay = document.getElementById('liveFullOverlay');
+
+  window.openLiveMatch = function() {
+    liveFullOverlay.classList.add('open');
+  };
+
+  window.closeLiveMatch = function() {
+    liveFullOverlay.classList.remove('open');
+  };
+
   // === Player Profile + Challenge ===
   var playerOverlay = document.getElementById('playerOverlay');
 
@@ -3888,6 +4246,7 @@ a, button, [role="button"] {
   var reviews = {};
   var screenNames = {
     screenHome: 'Главная',
+    screenLive: 'Live матчи',
     screenTournaments: 'Турниры',
     screenRating: 'Рейтинг',
     screenNews: 'Новости',
