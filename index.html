@@ -1597,6 +1597,196 @@ a, button, [role="button"] {
 .tl-status-dot.done { background: var(--text-dim); }
 .tl-status-dot.soon { background: var(--orange); }
 
+/* ===== PLAYER PROFILE / CHALLENGE ===== */
+.player-overlay {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 300;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.player-overlay.open { transform: translateY(0); }
+
+.player-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 16px;
+  position: relative;
+}
+.player-hero-avatar {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 3px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.player-hero-name {
+  font-size: 22px; font-weight: 800;
+  margin-bottom: 2px;
+}
+.player-hero-cat {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.player-stats-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.player-stat {
+  text-align: center;
+}
+.player-stat-val {
+  font-size: 20px; font-weight: 800;
+  color: var(--accent); line-height: 1;
+}
+.player-stat-label {
+  font-size: 10px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+/* Challenge form */
+.challenge-form {
+  margin: 0 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.challenge-form-title {
+  font-size: 15px; font-weight: 700;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.challenge-form-title span { font-size: 18px; }
+.challenge-row {
+  margin-bottom: 14px;
+}
+.challenge-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+.challenge-select {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 4 6 8 10 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.challenge-select:focus { border-color: var(--accent); }
+.challenge-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+.challenge-input:focus { border-color: var(--accent); }
+.challenge-date-row {
+  display: flex; gap: 8px;
+}
+.challenge-date-row .challenge-input { flex: 1; }
+.challenge-msg {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+}
+.challenge-msg:focus { border-color: var(--accent); }
+.challenge-send {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 4px;
+  transition: all 0.2s;
+}
+.challenge-send:active { transform: scale(0.98); }
+
+/* H2H section */
+.h2h-section {
+  margin: 0 16px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+.h2h-title {
+  font-size: 13px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+}
+.h2h-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.h2h-player {
+  text-align: center;
+}
+.h2h-player-name {
+  font-size: 12px; color: var(--text-sec);
+  margin-bottom: 4px;
+}
+.h2h-player-wins {
+  font-size: 28px; font-weight: 800;
+  color: var(--accent);
+}
+.h2h-vs {
+  font-size: 14px; font-weight: 600;
+  color: var(--text-dim);
+}
+.h2h-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+}
+.h2h-match-date { color: var(--text-muted); min-width: 60px; }
+.h2h-match-score { font-weight: 600; }
+.h2h-match-winner { color: var(--accent); }
+
 /* ===== CLIENT REVIEW MODE ===== */
 .review-bar {
   display: none;
@@ -2108,7 +2298,7 @@ a, button, [role="button"] {
           <div class="rr-form"><span class="rr-form-dot w"></span><span class="rr-form-dot w"></span><span class="rr-form-dot w"></span><span class="rr-form-dot l"></span><span class="rr-form-dot w"></span></div>
         </div>
 
-        <div class="rating-row">
+        <div class="rating-row" onclick="openPlayerOverlay()" style="cursor:pointer">
           <span class="rr-rank top">2</span>
           <div class="rr-player">
             <div class="rr-avatar">БС</div>
@@ -3349,6 +3539,103 @@ a, button, [role="button"] {
     </div>
   </div>
 
+  <!-- ====== PLAYER PROFILE + CHALLENGE OVERLAY ====== -->
+  <div class="player-overlay" id="playerOverlay">
+    <div class="td-topbar">
+      <button class="td-back" onclick="closePlayerOverlay()">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Назад
+      </button>
+      <span class="td-topbar-title">Профиль игрока</span>
+      <span style="width:60px"></span>
+    </div>
+
+    <div class="player-hero">
+      <div class="player-hero-avatar">БС</div>
+      <div class="player-hero-name">Бакыт Сыдыков</div>
+      <div class="player-hero-cat">Masters · #2 в рейтинге</div>
+      <div class="player-stats-row">
+        <div class="player-stat">
+          <div class="player-stat-val">2310</div>
+          <div class="player-stat-label">Очки</div>
+        </div>
+        <div class="player-stat">
+          <div class="player-stat-val">25</div>
+          <div class="player-stat-label">Победы</div>
+        </div>
+        <div class="player-stat">
+          <div class="player-stat-val">6</div>
+          <div class="player-stat-label">Поражения</div>
+        </div>
+        <div class="player-stat">
+          <div class="player-stat-val">4.5</div>
+          <div class="player-stat-label">NTRP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- H2H -->
+    <div class="h2h-section">
+      <div class="h2h-title">Личные встречи</div>
+      <div class="h2h-score">
+        <div class="h2h-player">
+          <div class="h2h-player-name">Вы</div>
+          <div class="h2h-player-wins">3</div>
+        </div>
+        <div class="h2h-vs">—</div>
+        <div class="h2h-player">
+          <div class="h2h-player-name">Сыдыков</div>
+          <div class="h2h-player-wins">2</div>
+        </div>
+      </div>
+      <div class="h2h-match">
+        <span class="h2h-match-date">15 мар</span>
+        <span class="h2h-match-score h2h-match-winner">6-4 3-6 7-5</span>
+        <span style="font-size:11px;color:var(--green)">Победа</span>
+      </div>
+      <div class="h2h-match">
+        <span class="h2h-match-date">28 фев</span>
+        <span class="h2h-match-score">4-6 2-6</span>
+        <span style="font-size:11px;color:var(--red)">Поражение</span>
+      </div>
+      <div class="h2h-match">
+        <span class="h2h-match-date">10 фев</span>
+        <span class="h2h-match-score h2h-match-winner">7-6 6-3</span>
+        <span style="font-size:11px;color:var(--green)">Победа</span>
+      </div>
+    </div>
+
+    <!-- Challenge form -->
+    <div class="challenge-form">
+      <div class="challenge-form-title"><span>⚔️</span> Вызвать на матч</div>
+
+      <div class="challenge-row">
+        <div class="challenge-label">Корт</div>
+        <select class="challenge-select">
+          <option>Выберите корт...</option>
+          <option>Dordoi Tennis Club</option>
+          <option>Ак-Булак</option>
+          <option>Спартак</option>
+        </select>
+      </div>
+
+      <div class="challenge-row">
+        <div class="challenge-label">Дата и время</div>
+        <div class="challenge-date-row">
+          <input class="challenge-input" type="date" value="2026-04-12">
+          <input class="challenge-input" type="time" value="10:00">
+        </div>
+      </div>
+
+      <div class="challenge-row">
+        <div class="challenge-label">Сообщение (необязательно)</div>
+        <textarea class="challenge-msg" placeholder="Напишите сообщение сопернику..."></textarea>
+      </div>
+
+      <button class="challenge-send" onclick="sendChallenge()">Отправить вызов</button>
+    </div>
+  </div>
+
   <!-- Review FAB -->
   <button class="review-fab visible" id="reviewFab" onclick="openReviewPanel()">
     💬
@@ -3577,6 +3864,25 @@ a, button, [role="button"] {
       if (target) target.classList.add('active');
     });
   });
+
+  // === Player Profile + Challenge ===
+  var playerOverlay = document.getElementById('playerOverlay');
+
+  window.openPlayerOverlay = function() {
+    playerOverlay.classList.add('open');
+  };
+
+  window.closePlayerOverlay = function() {
+    playerOverlay.classList.remove('open');
+  };
+
+  window.sendChallenge = function() {
+    // Show confirmation
+    var conf = document.createElement('div');
+    conf.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg-card);border:1px solid var(--accent);border-radius:16px;padding:24px;text-align:center;z-index:400;max-width:280px;width:90%';
+    conf.innerHTML = '<div style="font-size:32px;margin-bottom:8px">⚔️</div><div style="font-size:16px;font-weight:700;margin-bottom:4px">Вызов отправлен!</div><div style="font-size:13px;color:var(--text-sec);margin-bottom:16px">Бакыт Сыдыков получит уведомление через Push и Telegram</div><button onclick="this.parentElement.remove();closePlayerOverlay()" style="padding:10px 24px;border-radius:100px;background:var(--accent);color:#000;font-size:14px;font-weight:600;border:none;font-family:inherit;cursor:pointer">Отлично</button>';
+    document.body.appendChild(conf);
+  };
 
   // === Review Mode ===
   var reviews = {};
