@@ -1835,59 +1835,122 @@ a, button, [role="button"] {
   transition: transform 0.3s ease;
 }
 .live-full.open { transform: translateY(0); }
-.live-full-court {
-  text-align: center; font-size: 12px;
-  color: var(--text-muted); padding: 8px 0 4px;
-}
-.live-full-players {
-  display: flex; align-items: flex-start;
-  justify-content: center; gap: 16px; padding: 20px 16px;
-}
-.live-full-p { flex: 1; text-align: center; max-width: 120px; }
-.live-full-avatar {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: var(--bg-elevated); border: 2px solid var(--border-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px; font-weight: 700; color: var(--text-sec);
-  margin: 0 auto 8px;
-}
-.live-full-avatar.serving { border-color: var(--accent); box-shadow: 0 0 16px var(--accent-glow); }
-.live-full-name { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
-.live-full-rank { font-size: 11px; color: var(--text-muted); }
-
-/* Scoreboard table */
+/* Scoreboard (like website) */
 .live-full-scoreboard {
-  margin: 0 16px;
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); overflow: hidden;
+  margin: 0 16px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
-.live-full-score-head {
-  display: flex; padding: 8px 14px;
-  font-size: 10px; font-weight: 600;
-  color: var(--text-dim); text-transform: uppercase;
+.live-full-sb-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 6px;
   border-bottom: 1px solid var(--border);
 }
-.sh-name { flex: 1; }
-.sh-set { width: 32px; text-align: center; }
-.sh-game { width: 40px; text-align: center; }
-.live-full-score-row {
-  display: flex; align-items: center;
-  padding: 10px 14px; border-bottom: 1px solid var(--border);
+.live-full-sb-header .sb-dot {
+  width: 8px; height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: livePulse 1.5s infinite;
 }
-.live-full-score-row:last-child { border-bottom: none; }
-.live-full-score-row.serving { background: rgba(204,255,0,0.04); }
-.sr-name { flex: 1; font-size: 13px; font-weight: 600; }
-.sr-name .sr-dot {
-  display: inline-block; width: 6px; height: 6px;
-  background: var(--accent); border-radius: 50%; margin-right: 6px;
+.live-full-sb-header .sb-label {
+  font-size: 12px; font-weight: 700;
+  color: var(--red); text-transform: uppercase;
 }
-.sr-set { width: 32px; text-align: center; font-size: 15px; font-weight: 700; }
-.sr-set.won { color: var(--accent); }
-.sr-game { width: 40px; text-align: center; font-size: 15px; font-weight: 800; color: var(--accent); }
+.live-full-sb-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.live-full-sb-row:last-child { border-bottom: none; }
+.live-full-sb-row.serving { background: rgba(204,255,0,0.04); }
+.sb-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: var(--text-sec);
+  flex-shrink: 0;
+}
+.live-full-sb-row.serving .sb-avatar {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.sb-dot-serve {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sb-no-serve { width: 6px; flex-shrink: 0; }
+.sb-pname {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sb-sets {
+  display: flex; gap: 4px; flex-shrink: 0;
+}
+.sb-set-val {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  color: var(--text-sec);
+}
+.sb-set-val.won { color: var(--accent); }
+.sb-set-val.current {
+  background: var(--accent);
+  color: #000;
+  font-weight: 800;
+}
+
+/* Video / stream area */
+.live-full-video {
+  margin: 0 16px 12px;
+  aspect-ratio: 16/9;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+/* Match info bar */
+.live-full-info {
+  margin: 0 16px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.live-full-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.live-full-info-row .lfi-label { color: var(--text-muted); }
+.live-full-info-row .lfi-val { font-weight: 600; }
 
 /* Match stats */
 .live-stats {
-  margin: 12px 16px;
+  margin: 0 16px 16px;
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 14px;
 }
@@ -4186,44 +4249,58 @@ a, button, [role="button"] {
       <span style="width:60px"></span>
     </div>
 
-    <div class="live-full-court">Корт #1 · Masters Invitational · Полуфинал</div>
-
-    <div class="live-full-players">
-      <div class="live-full-p">
-        <div class="live-full-avatar serving">АИ</div>
-        <div class="live-full-name">А. Иванов</div>
-        <div class="live-full-rank">#1 · Masters</div>
+    <!-- Scoreboard — like website -->
+    <div class="live-full-scoreboard">
+      <div class="live-full-sb-header">
+        <span class="sb-dot"></span>
+        <span class="sb-label">LIVE</span>
       </div>
-      <div style="font-size:16px;font-weight:800;color:var(--text-dim);padding-top:24px">VS</div>
-      <div class="live-full-p">
-        <div class="live-full-avatar">ДК</div>
-        <div class="live-full-name">Д. Козлов</div>
-        <div class="live-full-rank">#3 · Masters</div>
+      <div class="live-full-sb-row serving">
+        <div class="sb-avatar">КХ</div>
+        <span class="sb-dot-serve"></span>
+        <span class="sb-pname">Константин Хан</span>
+        <div class="sb-sets">
+          <span class="sb-set-val won">6</span>
+          <span class="sb-set-val">7</span>
+          <span class="sb-set-val won">1</span>
+          <span class="sb-set-val current">0</span>
+        </div>
+      </div>
+      <div class="live-full-sb-row">
+        <div class="sb-avatar">ТР</div>
+        <span class="sb-no-serve"></span>
+        <span class="sb-pname">Тенниса Ракетовна</span>
+        <div class="sb-sets">
+          <span class="sb-set-val">1</span>
+          <span class="sb-set-val won">6</span>
+          <span class="sb-set-val">5</span>
+          <span class="sb-set-val current">0</span>
+        </div>
       </div>
     </div>
 
-    <!-- Scoreboard -->
-    <div class="live-full-scoreboard">
-      <div class="live-full-score-head">
-        <span class="sh-name">Игрок</span>
-        <span class="sh-set">С1</span>
-        <span class="sh-set">С2</span>
-        <span class="sh-set">С3</span>
-        <span class="sh-game">Гейм</span>
+    <!-- Video / stream area -->
+    <div class="live-full-video">
+      Нет трансляции
+    </div>
+
+    <!-- Match info -->
+    <div class="live-full-info">
+      <div class="live-full-info-row">
+        <span class="lfi-label">Турнир</span>
+        <span class="lfi-val">5 сетовый марафон</span>
       </div>
-      <div class="live-full-score-row serving">
-        <span class="sr-name"><span class="sr-dot"></span>А. Иванов</span>
-        <span class="sr-set won">6</span>
-        <span class="sr-set">4</span>
-        <span class="sr-set">—</span>
-        <span class="sr-game">30</span>
+      <div class="live-full-info-row">
+        <span class="lfi-label">Формат</span>
+        <span class="lfi-val">Лучший из 5</span>
       </div>
-      <div class="live-full-score-row">
-        <span class="sr-name" style="padding-left:12px">Д. Козлов</span>
-        <span class="sr-set">3</span>
-        <span class="sr-set won">5</span>
-        <span class="sr-set">—</span>
-        <span class="sr-game">40</span>
+      <div class="live-full-info-row">
+        <span class="lfi-label">Корт</span>
+        <span class="lfi-val">Корт #1</span>
+      </div>
+      <div class="live-full-info-row">
+        <span class="lfi-label">Раунд</span>
+        <span class="lfi-val">Полуфинал</span>
       </div>
     </div>
 
