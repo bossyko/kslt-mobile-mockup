@@ -1343,6 +1343,179 @@ a, button, [role="button"] {
 .bracket-pscore { font-size: 13px; font-weight: 700; min-width: 50px; text-align: right; }
 .bracket-player.winner .bracket-pscore { color: var(--accent); }
 
+/* Group stage tables */
+.bracket-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 20px 0 8px;
+  padding: 10px 0 6px;
+  border-bottom: 1px solid var(--border);
+}
+.bracket-section-title:first-child { margin-top: 0; }
+
+.group-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+.group-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.group-table th {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 6px 4px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.group-table th:first-child,
+.group-table th:nth-child(2) {
+  text-align: left;
+}
+.group-table td {
+  font-size: 12px;
+  padding: 8px 4px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-sec);
+}
+.group-table td:first-child {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 11px;
+  width: 20px;
+}
+.group-table td:nth-child(2) {
+  text-align: left;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 13px;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.group-table td.g-self {
+  color: var(--text-dim);
+  font-size: 10px;
+}
+.group-table td.g-win {
+  color: var(--green);
+  font-weight: 600;
+}
+.group-table td.g-loss {
+  color: var(--red);
+  font-weight: 600;
+}
+.group-table td:last-child {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 13px;
+}
+.group-table tr:last-child td { border-bottom: none; }
+.group-table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.group-table-wrap .group-table { margin-bottom: 0; }
+.group-table-wrap .group-table th,
+.group-table-wrap .group-table td { padding: 8px 6px; }
+
+/* Playoff bracket - horizontal scroll */
+.bracket-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.bracket-scroll::-webkit-scrollbar { height: 3px; }
+.bracket-scroll::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 2px; }
+.bracket-col {
+  min-width: 200px;
+  flex-shrink: 0;
+}
+.bracket-col-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.bracket-match-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.bracket-match-card.final { border-color: var(--accent); }
+.bracket-match-meta {
+  font-size: 10px;
+  color: var(--text-dim);
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.bracket-match-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.bracket-match-row:last-child { border-bottom: none; }
+.bracket-match-row.winner { background: rgba(204,255,0,0.06); }
+.bracket-match-row .bm-seed {
+  font-size: 10px;
+  color: var(--text-dim);
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.bracket-match-row .bm-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bracket-match-row.winner .bm-name { color: var(--accent); font-weight: 600; }
+.bracket-match-row .bm-score {
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.bracket-match-row.winner .bm-score { color: var(--accent); }
+.bracket-match-status {
+  text-align: center;
+  padding: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
 /* Score entry */
 .score-entry-card {
   background: var(--bg-card);
@@ -3703,105 +3876,226 @@ a, button, [role="button"] {
 
     <!-- Bracket tab -->
     <div class="td-tab-content" id="tdBracket">
-      <div class="bracket-round">
-        <div class="bracket-round-title">1/4 финала</div>
-        <div class="bracket-match">
-          <div class="bracket-player winner">
-            <span class="bracket-seed">[1]</span>
-            <span class="bracket-pname">А. Иванов</span>
-            <span class="bracket-pscore">6-4 6-2</span>
+
+      <!-- ===== ГРУППОВОЙ ЭТАП ===== -->
+      <div class="bracket-section-title">Групповой этап</div>
+
+      <!-- Группа A -->
+      <div class="group-title">Группа A</div>
+      <div class="group-table-wrap">
+        <table class="group-table">
+          <tr><th>№</th><th>Игрок</th><th>1</th><th>2</th><th>3</th><th>4</th><th>П</th><th>Место</th></tr>
+          <tr>
+            <td>1</td><td>Яна Голубева</td>
+            <td class="g-self">×</td><td class="g-win">6:0</td><td class="g-win">6:1</td><td class="g-win">4:6</td><td>2</td><td>1</td>
+          </tr>
+          <tr>
+            <td>2</td><td>Вали Ермакова</td>
+            <td class="g-loss">0:6</td><td class="g-self">×</td><td class="g-loss">2:6</td><td class="g-win">6:3</td><td>1</td><td>3</td>
+          </tr>
+          <tr>
+            <td>3</td><td>Инга Климова</td>
+            <td class="g-loss">1:6</td><td class="g-win">6:2</td><td class="g-self">×</td><td class="g-win">6:4</td><td>2</td><td>2</td>
+          </tr>
+          <tr>
+            <td>4</td><td>Майя Логинова</td>
+            <td class="g-win">6:4</td><td class="g-loss">3:6</td><td class="g-loss">4:6</td><td class="g-self">×</td><td>1</td><td>4</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Группа B -->
+      <div class="group-title">Группа B</div>
+      <div class="group-table-wrap">
+        <table class="group-table">
+          <tr><th>№</th><th>Игрок</th><th>1</th><th>2</th><th>3</th><th>4</th><th>П</th><th>Место</th></tr>
+          <tr>
+            <td>1</td><td>Ника Воронова</td>
+            <td class="g-self">×</td><td class="g-win">7:6</td><td class="g-win">7:5</td><td class="g-win">6:4</td><td>3</td><td>1</td>
+          </tr>
+          <tr>
+            <td>2</td><td>Марта Тихонова</td>
+            <td class="g-loss">6:7</td><td class="g-self">×</td><td class="g-win">2:6</td><td class="g-win">6:1</td><td>2</td><td>2</td>
+          </tr>
+          <tr>
+            <td>3</td><td>Инна Карпова</td>
+            <td class="g-loss">5:7</td><td class="g-win">6:2</td><td class="g-self">×</td><td class="g-loss">1:6</td><td>1</td><td>4</td>
+          </tr>
+          <tr>
+            <td>4</td><td>Тома Журавлёва</td>
+            <td class="g-loss">4:6</td><td class="g-loss">1:6</td><td class="g-win">6:1</td><td class="g-self">×</td><td>1</td><td>3</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Группа C -->
+      <div class="group-title">Группа C</div>
+      <div class="group-table-wrap">
+        <table class="group-table">
+          <tr><th>№</th><th>Игрок</th><th>1</th><th>2</th><th>3</th><th>4</th><th>П</th><th>Место</th></tr>
+          <tr>
+            <td>1</td><td>Рита Тарасова</td>
+            <td class="g-self">×</td><td class="g-win">6:0</td><td class="g-win">6:0</td><td class="g-win">0:6</td><td>2</td><td>2</td>
+          </tr>
+          <tr>
+            <td>2</td><td>Лиза Гаврилина</td>
+            <td class="g-loss">0:6</td><td class="g-self">×</td><td class="g-win">6:0</td><td class="g-win">0:6</td><td>1</td><td>3</td>
+          </tr>
+          <tr>
+            <td>3</td><td>Зоя Макарова</td>
+            <td class="g-loss">0:6</td><td class="g-loss">0:6</td><td class="g-self">×</td><td class="g-win">6:0</td><td>1</td><td>4</td>
+          </tr>
+          <tr>
+            <td>4</td><td>Роза Никитина</td>
+            <td class="g-win">6:0</td><td class="g-win">6:0</td><td class="g-win">6:0</td><td class="g-self">×</td><td>2</td><td>1</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ===== ПЛЕЙ-ОФФ СЕТКА ===== -->
+      <div class="bracket-section-title">Плей-офф</div>
+
+      <div class="bracket-scroll">
+        <!-- Четвертьфинал -->
+        <div class="bracket-col">
+          <div class="bracket-col-title">Четвертьфинал</div>
+
+          <div class="bracket-match-card">
+            <div class="bracket-match-meta"><span>14:00 · Корт 1</span></div>
+            <div class="bracket-match-row winner">
+              <span class="bm-seed">[1]</span>
+              <span class="bm-name">Яна Голубева</span>
+              <span class="bm-score">6</span>
+            </div>
+            <div class="bracket-match-row">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Рита Тарасова</span>
+              <span class="bm-score">3</span>
+            </div>
           </div>
-          <div class="bracket-player">
-            <span class="bracket-seed">[8]</span>
-            <span class="bracket-pname">Р. Мусаев</span>
-            <span class="bracket-pscore">4-6 2-6</span>
+
+          <div class="bracket-match-card">
+            <div class="bracket-match-meta"><span>14:00 · Корт 2</span></div>
+            <div class="bracket-match-row winner">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Инга Климова</span>
+              <span class="bm-score">7</span>
+            </div>
+            <div class="bracket-match-row">
+              <span class="bm-seed">[4]</span>
+              <span class="bm-name">Лена Белова</span>
+              <span class="bm-score">5</span>
+            </div>
+          </div>
+
+          <div class="bracket-match-card">
+            <div class="bracket-match-meta"><span>14:00 · Корт 3</span></div>
+            <div class="bracket-match-row winner">
+              <span class="bm-seed">[3]</span>
+              <span class="bm-name">Роза Никитина</span>
+              <span class="bm-score">6</span>
+            </div>
+            <div class="bracket-match-row">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Марта Тихонова</span>
+              <span class="bm-score">1</span>
+            </div>
+          </div>
+
+          <div class="bracket-match-card">
+            <div class="bracket-match-meta"><span>14:00 · Корт 4</span></div>
+            <div class="bracket-match-row winner">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Алла Захарова</span>
+              <span class="bm-score">7</span>
+            </div>
+            <div class="bracket-match-row">
+              <span class="bm-seed">[2]</span>
+              <span class="bm-name">Ника Воронова</span>
+              <span class="bm-score">6<sup>7</sup></span>
+            </div>
           </div>
         </div>
-        <div class="bracket-match">
-          <div class="bracket-player">
-            <span class="bracket-seed">[4]</span>
-            <span class="bracket-pname">Н. Аманов</span>
-            <span class="bracket-pscore">3-6 6-4 4-6</span>
+
+        <!-- Полуфинал -->
+        <div class="bracket-col">
+          <div class="bracket-col-title">Полуфинал</div>
+
+          <div class="bracket-match-card">
+            <div class="bracket-match-meta"><span>14:50 · Корт 1</span></div>
+            <div class="bracket-match-row">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Яна Голубева</span>
+              <span class="bm-score">1</span>
+            </div>
+            <div class="bracket-match-row winner">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Инга Климова</span>
+              <span class="bm-score">6</span>
+            </div>
+            <div class="bracket-match-status">Игр.</div>
           </div>
-          <div class="bracket-player winner">
-            <span class="bracket-seed">[5]</span>
-            <span class="bracket-pname">Т. Маратов</span>
-            <span class="bracket-pscore">6-3 4-6 6-4</span>
+
+          <div class="bracket-match-card">
+            <div class="bracket-match-meta"><span>14:50 · Корт 2</span></div>
+            <div class="bracket-match-row winner">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Роза Никитина</span>
+              <span class="bm-score">6</span>
+            </div>
+            <div class="bracket-match-row">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Алла Захарова</span>
+              <span class="bm-score">2</span>
+            </div>
+            <div class="bracket-match-status">Игр.</div>
           </div>
         </div>
-        <div class="bracket-match">
-          <div class="bracket-player winner">
-            <span class="bracket-seed">[2]</span>
-            <span class="bracket-pname">Б. Сыдыков</span>
-            <span class="bracket-pscore">6-1 6-3</span>
+
+        <!-- Финал -->
+        <div class="bracket-col">
+          <div class="bracket-col-title">Финал</div>
+
+          <div class="bracket-match-card final">
+            <div class="bracket-match-meta"><span>15:40 · Корт 2</span></div>
+            <div class="bracket-match-row winner">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Инга Климова</span>
+              <span class="bm-score">6</span>
+            </div>
+            <div class="bracket-match-row">
+              <span class="bm-seed"></span>
+              <span class="bm-name">Роза Никитина</span>
+              <span class="bm-score">2</span>
+            </div>
+            <div class="bracket-match-status">Игр.</div>
           </div>
-          <div class="bracket-player">
-            <span class="bracket-seed">[7]</span>
-            <span class="bracket-pname">А. Токоев</span>
-            <span class="bracket-pscore">1-6 3-6</span>
-          </div>
-        </div>
-        <div class="bracket-match">
-          <div class="bracket-player winner">
-            <span class="bracket-seed">[3]</span>
-            <span class="bracket-pname">Д. Козлов</span>
-            <span class="bracket-pscore">7-5 6-4</span>
-          </div>
-          <div class="bracket-player">
-            <span class="bracket-seed">[6]</span>
-            <span class="bracket-pname">Е. Жумабеков</span>
-            <span class="bracket-pscore">5-7 4-6</span>
+
+          <div style="text-align:center;padding:12px 0">
+            <span style="font-size:20px">🏆</span>
+            <div style="font-size:13px;font-weight:700;color:var(--accent);margin-top:4px">Инга Климова</div>
           </div>
         </div>
       </div>
 
-      <div class="bracket-round">
-        <div class="bracket-round-title">Полуфинал</div>
-        <div class="bracket-match">
-          <div class="bracket-player winner">
-            <span class="bracket-seed">[1]</span>
-            <span class="bracket-pname">А. Иванов</span>
-            <span class="bracket-pscore">6-3 6-4</span>
+      <!-- За 3-е место -->
+      <div style="margin-top:12px">
+        <div class="bracket-section-title">За 3-е место</div>
+        <div class="bracket-match-card">
+          <div class="bracket-match-meta"><span>15:40 · Корт 1</span></div>
+          <div class="bracket-match-row winner">
+            <span class="bm-seed"></span>
+            <span class="bm-name">Яна Голубева</span>
+            <span class="bm-score">6</span>
           </div>
-          <div class="bracket-player">
-            <span class="bracket-seed">[5]</span>
-            <span class="bracket-pname">Т. Маратов</span>
-            <span class="bracket-pscore">3-6 4-6</span>
-          </div>
-        </div>
-        <div class="bracket-match">
-          <div class="bracket-player">
-            <span class="bracket-seed">[2]</span>
-            <span class="bracket-pname">Б. Сыдыков</span>
-            <span class="bracket-pscore">4-6 6-3 3-6</span>
-          </div>
-          <div class="bracket-player winner">
-            <span class="bracket-seed">[3]</span>
-            <span class="bracket-pname">Д. Козлов</span>
-            <span class="bracket-pscore">6-4 3-6 6-3</span>
+          <div class="bracket-match-row">
+            <span class="bm-seed"></span>
+            <span class="bm-name">Алла Захарова</span>
+            <span class="bm-score">2</span>
           </div>
         </div>
       </div>
 
-      <div class="bracket-round">
-        <div class="bracket-round-title">Финал</div>
-        <div class="bracket-match" style="border-color:var(--accent)">
-          <div class="bracket-player winner">
-            <span class="bracket-seed">[1]</span>
-            <span class="bracket-pname">А. Иванов</span>
-            <span class="bracket-pscore">6-4 3-6 7-5</span>
-          </div>
-          <div class="bracket-player">
-            <span class="bracket-seed">[3]</span>
-            <span class="bracket-pname">Д. Козлов</span>
-            <span class="bracket-pscore">4-6 6-3 5-7</span>
-          </div>
-        </div>
-        <div style="text-align:center;padding:12px 0">
-          <span style="font-size:24px">🏆</span>
-          <div style="font-size:14px;font-weight:700;color:var(--accent);margin-top:4px">Победитель: А. Иванов</div>
-        </div>
-      </div>
     </div>
 
     <!-- Results tab -->
