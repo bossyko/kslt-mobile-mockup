@@ -1244,15 +1244,16 @@ a, button, [role="button"] {
 /* ===== TOURNAMENT DETAIL OVERLAY ===== */
 .td-overlay {
   position: fixed;
-  inset: 0;
+  top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%) translateY(100%);
+  width: 100%; max-width: 440px;
   background: var(--bg);
   z-index: 300;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  transform: translateY(100%);
   transition: transform 0.3s ease;
 }
-.td-overlay.open { transform: translateY(0); }
+.td-overlay.open { transform: translateX(-50%) translateY(0); }
 .td-topbar {
   display: flex;
   align-items: center;
@@ -1828,13 +1829,14 @@ a, button, [role="button"] {
 
 /* Full live match view */
 .live-full {
-  position: fixed; inset: 0;
+  position: fixed; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%) translateY(100%);
+  width: 100%; max-width: 440px;
   background: var(--bg); z-index: 300;
   overflow-y: auto;
-  transform: translateY(100%);
   transition: transform 0.3s ease;
 }
-.live-full.open { transform: translateY(0); }
+.live-full.open { transform: translateX(-50%) translateY(0); }
 /* Scoreboard (like website) */
 .live-full-scoreboard {
   margin: 0 16px 12px;
@@ -1970,15 +1972,16 @@ a, button, [role="button"] {
 
 /* ===== PLAYER PROFILE / CHALLENGE ===== */
 .player-overlay {
-  position: fixed; inset: 0;
+  position: fixed; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%) translateY(100%);
+  width: 100%; max-width: 440px;
   background: var(--bg);
   z-index: 300;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  transform: translateY(100%);
   transition: transform 0.3s ease;
 }
-.player-overlay.open { transform: translateY(0); }
+.player-overlay.open { transform: translateX(-50%) translateY(0); }
 
 .player-hero {
   display: flex;
@@ -2160,7 +2163,9 @@ a, button, [role="button"] {
 
 /* ===== AUTH SCREEN ===== */
 .auth-screen {
-  position: fixed; inset: 0;
+  position: fixed; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 440px;
   background: var(--bg);
   z-index: 500;
   display: flex;
@@ -4249,6 +4254,11 @@ a, button, [role="button"] {
       <span style="width:60px"></span>
     </div>
 
+    <!-- Video / stream area -->
+    <div class="live-full-video">
+      Нет трансляции
+    </div>
+
     <!-- Scoreboard — like website -->
     <div class="live-full-scoreboard">
       <div class="live-full-sb-header">
@@ -4277,11 +4287,6 @@ a, button, [role="button"] {
           <span class="sb-set-val current">0</span>
         </div>
       </div>
-    </div>
-
-    <!-- Video / stream area -->
-    <div class="live-full-video">
-      Нет трансляции
     </div>
 
     <!-- Match info -->
